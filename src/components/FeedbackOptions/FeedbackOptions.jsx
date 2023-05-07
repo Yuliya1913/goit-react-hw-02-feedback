@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import css from 'components/FeedbackOptions/FeedbackOptions.module.css';
 
 export const FeedbackOptions = ({
   handleIncreaseGood,
@@ -7,9 +8,15 @@ export const FeedbackOptions = ({
 }) => {
   return (
     <>
-      <button onClick={handleIncreaseGood}>good</button>
-      <button onClick={handleIncreaseNeutral}>neutral</button>
-      <button onClick={handleIncreaseBad}>bad</button>
+      <button className={css.btn} onClick={handleIncreaseGood}>
+        good
+      </button>
+      <button className={css.btn} onClick={handleIncreaseNeutral}>
+        neutral
+      </button>
+      <button className={css.btn} onClick={handleIncreaseBad}>
+        bad
+      </button>
     </>
   );
 };

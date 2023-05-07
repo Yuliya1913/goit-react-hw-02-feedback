@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
+import css from 'components/Statistics/Statistics.module.css';
 
 export const Statistics = ({ good, neutral, bad, total, positiveFeedback }) => {
   return (
     <>
       {good || neutral || bad ? (
-        <>
+        <div className={css.text}>
           <p>Good:{good}</p>
           <p>Neutral:{neutral}</p>
           <p>Bad:{bad}</p>
@@ -18,9 +19,9 @@ export const Statistics = ({ good, neutral, bad, total, positiveFeedback }) => {
             Positive feedback:
             {positiveFeedback}%
           </p>
-        </>
+        </div>
       ) : (
-        <p>No feedback given </p>
+        <p className={css.text}>No feedback given </p>
       )}
     </>
   );

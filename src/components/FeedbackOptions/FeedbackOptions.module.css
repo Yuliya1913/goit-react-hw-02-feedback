@@ -1,0 +1,16 @@
+.btn {
+  background-color: #ade1ae;
+  border: none;
+  color: rgb(14, 13, 13);
+  padding: 20px 45px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+  margin-right: 30px;
+}
+
+.btn:hover {
+  background-color: aqua;
+  color: rgb(5, 5, 74);
+}

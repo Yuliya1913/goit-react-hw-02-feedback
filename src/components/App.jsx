@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { FeedbackOptions } from 'components/FeedbackOptions/FeedbackOptions';
 import { Statistics } from 'components/Statistics/Statistics';
 import { Section } from 'components/Section/Section';
+import css from 'components/App.module.css';
 
 export class App extends Component {
   state = {
@@ -47,7 +48,7 @@ export class App extends Component {
 
   render() {
     return (
-      <>
+      <div className={css.container}>
         <Section title="Please leave feedback">
           <FeedbackOptions
             handleIncreaseGood={this.handleIncreaseGood}
@@ -72,7 +73,7 @@ export class App extends Component {
             }
           />
         </Section>
-      </>
+      </div>
     );
   }
 }
