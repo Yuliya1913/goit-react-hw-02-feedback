@@ -1,20 +1,16 @@
 import PropTypes from 'prop-types';
 import css from 'components/FeedbackOptions/FeedbackOptions.module.css';
 
-export const FeedbackOptions = ({
-  handleIncreaseGood,
-  handleIncreaseNeutral,
-  handleIncreaseBad,
-}) => {
+export const FeedbackOptions = ({ onLeaveFeedback }) => {
   return (
     <>
-      <button className={css.btn} onClick={handleIncreaseGood}>
+      <button name="good" className={css.btn} onClick={onLeaveFeedback}>
         good
       </button>
-      <button className={css.btn} onClick={handleIncreaseNeutral}>
+      <button name="neutral" className={css.btn} onClick={onLeaveFeedback}>
         neutral
       </button>
-      <button className={css.btn} onClick={handleIncreaseBad}>
+      <button name="bad" className={css.btn} onClick={onLeaveFeedback}>
         bad
       </button>
     </>
@@ -22,7 +18,5 @@ export const FeedbackOptions = ({
 };
 
 FeedbackOptions.propTypes = {
-  handleIncreaseGood: PropTypes.func.isRequired,
-  handleIncreaseNeutral: PropTypes.func.isRequired,
-  handleIncreaseBad: PropTypes.func.isRequired,
+  onLeaveFeedback: PropTypes.func.isRequired,
 };

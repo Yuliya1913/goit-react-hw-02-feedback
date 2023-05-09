@@ -11,25 +11,12 @@ export class App extends Component {
     bad: 0,
   };
 
-  handleIncreaseGood = event => {
+  onLeaveFeedback = event => {
+    const { name } = event.currentTarget;
     this.setState(prevState => {
       return {
-        good: prevState.good + 1,
-      };
-    });
-  };
-
-  handleIncreaseNeutral = event => {
-    this.setState(prevState => {
-      return {
-        neutral: prevState.neutral + 1,
-      };
-    });
-  };
-  handleIncreaseBad = event => {
-    this.setState(prevState => {
-      return {
-        bad: prevState.bad + 1,
+        ...this.state,
+        [name]: prevState[name] + 1,
       };
     });
   };
@@ -50,11 +37,7 @@ export class App extends Component {
     return (
       <div className={css.container}>
         <Section title="Please leave feedback">
-          <FeedbackOptions
-            handleIncreaseGood={this.handleIncreaseGood}
-            handleIncreaseNeutral={this.handleIncreaseNeutral}
-            handleIncreaseBad={this.handleIncreaseBad}
-          />
+          <FeedbackOptions onLeaveFeedback={this.onLeaveFeedback} />
         </Section>
 
         <Section title="Statistics">
