@@ -22,38 +22,36 @@ export class App extends Component {
   };
 
   countTotalFeedback = () => {
-    return this.state.good + this.state.neutral + this.state.bad;
+    const { good, neutral, bad } = this.state;
+
+    return good + neutral + bad;
   };
 
   countPositiveFeedbackPercentage = () => {
-    return Math.ceil(
-      (this.state.good /
-        (this.state.good + this.state.neutral + this.state.bad)) *
-        100
-    );
+    const { good } = this.state;
+
+    return Math.ceil((good / this.countTotalFeedback()) * 100) || 0;
   };
 
   render() {
+    const { good, neutral, bad } = this.state;
+
     return (
       <div className={css.container}>
         <Section title="Please leave feedback">
-          <FeedbackOptions onLeaveFeedback={this.onLeaveFeedback} />
+          <FeedbackOptions
+            options={Object.keys(this.state)}
+            onLeaveFeedback={this.onLeaveFeedback}
+          />
         </Section>
 
         <Section title="Statistics">
           <Statistics
-            good={this.state.good}
-            neutral={this.state.neutral}
-            bad={this.state.bad}
-            // Если есть данные в good или neutral или  bad - то вызывaй метод countTotalFeedback
-            total={
-              (this.state.good || this.state.neutral || this.state.bad) &&
-              this.countTotalFeedback()
-            }
-            //если есть good - вызывай метод  countPositiveFeedbackPercentage
-            positiveFeedback={
-              this.state.good && this.countPositiveFeedbackPercentage()
-            }
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            total={this.countTotalFeedback()}
+            positiveFeedback={this.countPositiveFeedbackPercentage()}
           />
         </Section>
       </div>
